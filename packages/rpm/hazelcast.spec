@@ -33,7 +33,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__cp} -vrf %{name}-%{hzversion}/* %{buildroot}%{_prefix}/lib/%{name}/%{name}-%{hzversion}
 %{__chmod} 755 %{buildroot}%{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz
 %{__mkdir} -p %{buildroot}/%{_bindir}
+
 %{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz %{buildroot}/%{_bindir}/hz
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-cli %{buildroot}/%{_bindir}/hz-cli
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-cluster-admin %{buildroot}/%{_bindir}/hz-cluster-admin
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-cluster-cp-admin %{buildroot}/%{_bindir}/hz-cluster-cp-admin
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-healthcheck %{buildroot}/%{_bindir}/hz-healthcheck
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-start %{buildroot}/%{_bindir}/hz-start
+%{__ln_s} %{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/hz-stop %{buildroot}/%{_bindir}/hz-stop
+
 echo 'hazelcastDownloadId=CLI_RPM' > "%{buildroot}%{_prefix}/lib/%{name}/%{name}-%{hzversion}/bin/download/hazelcast-download.properties"
 
 %post
